@@ -20,12 +20,12 @@ const Header: React.FC<HeaderProps> = ({ currentMode, setMode }) => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-8 h-8 text-cyan-400" />
-            <span className="text-xl font-display font-bold text-white tracking-wider">
+            <span className="text-xl font-display font-bold text-white tracking-wider hidden sm:inline-block">
               GENESYS<span className="text-cyan-400">.AI</span>
             </span>
           </div>
           
-          <nav className="flex gap-4">
+          <nav className="flex gap-2 sm:gap-4">
             {navItems.map((item) => (
               <button
                 key={item.label}

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Upload, FileVideo, AlertTriangle, CheckCircle, Search, MapPin, Loader2 } from 'lucide-react';
+import { Upload, FileVideo, Search, MapPin, Loader2 } from 'lucide-react';
 import { analyzeVideo } from '../services/geminiService';
 import { AnalysisResult } from '../types';
 
@@ -44,6 +44,7 @@ const VideoAnalyzer: React.FC<VideoAnalyzerProps> = ({ onResult }) => {
     setIsAnalyzing(true);
     try {
       let userLoc = undefined;
+      // Only check location if feature is selected
       if (checkLocation && navigator.geolocation) {
         try {
           const pos = await new Promise<GeolocationPosition>((resolve, reject) => 
@@ -56,6 +57,7 @@ const VideoAnalyzer: React.FC<VideoAnalyzerProps> = ({ onResult }) => {
       }
 
       const base64 = await fileToBase64(file);
+      
       const result = await analyzeVideo(base64, file.type, checkSearch, checkLocation, userLoc);
       onResult(result, file);
     } catch (error) {
@@ -115,20 +117,20 @@ const VideoAnalyzer: React.FC<VideoAnalyzerProps> = ({ onResult }) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <button
           onClick={() => setCheckSearch(!checkSearch)}
-          className={`flex items-center p-4 rounded-xl border transition-all ${
+          className={`relative flex items-center p-4 rounded-xl border transition-all ${
             checkSearch ? 'bg-cyan-950/30 border-cyan-500/50 text-cyan-100' : 'bg-slate-900 border-slate-800 text-slate-400'
           }`}
         >
           <Search className={`w-5 h-5 mr-3 ${checkSearch ? 'text-cyan-400' : ''}`} />
           <div className="text-left">
-            <div className="font-semibold text-sm">Web Cross-Reference</div>
+            <div className="font-semibold text-sm flex items-center gap-2">Web Cross-Reference</div>
             <div className="text-xs opacity-70">Verify events with Google Search</div>
           </div>
         </button>
 
         <button
           onClick={() => setCheckLocation(!checkLocation)}
-          className={`flex items-center p-4 rounded-xl border transition-all ${
+          className={`relative flex items-center p-4 rounded-xl border transition-all ${
             checkLocation ? 'bg-cyan-950/30 border-cyan-500/50 text-cyan-100' : 'bg-slate-900 border-slate-800 text-slate-400'
           }`}
         >
@@ -156,7 +158,7 @@ const VideoAnalyzer: React.FC<VideoAnalyzerProps> = ({ onResult }) => {
             ANALYZING FRAMES...
           </div>
         ) : (
-          "INITIATE SCAN"
+          `INITIATE SCAN`
         )}
       </button>
     </div>

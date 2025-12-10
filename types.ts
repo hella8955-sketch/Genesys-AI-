@@ -33,3 +33,32 @@ export enum AppMode {
   CHAT = 'CHAT',
   LIVE = 'LIVE'
 }
+
+export type PlanType = 'TRIAL' | 'STARTER' | 'INTERMEDIATE' | 'BUSINESS';
+
+export interface UserProfile {
+  email: string;
+  type: 'Individual' | 'Business';
+  plan: PlanType;
+  creditsRemaining: number;
+  isTrialUsed: boolean;
+}
+
+export const PLAN_FEATURES: Record<PlanType, { scans: number; features: string[] }> = {
+  TRIAL: {
+    scans: 5,
+    features: ['SCAN_BASIC']
+  },
+  STARTER: {
+    scans: 20,
+    features: ['SCAN_BASIC', 'REPORT']
+  },
+  INTERMEDIATE: {
+    scans: 50,
+    features: ['SCAN_BASIC', 'REPORT', 'SEARCH', 'CHAT']
+  },
+  BUSINESS: {
+    scans: -1,
+    features: ['SCAN_BASIC', 'REPORT', 'SEARCH', 'MAPS', 'CHAT', 'LIVE', 'API']
+  }
+};

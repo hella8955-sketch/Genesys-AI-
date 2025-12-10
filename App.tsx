@@ -39,7 +39,7 @@ const App: React.FC = () => {
       timestamp: Date.now(),
       score: result.score,
       result: result.verdict,
-      thumbnail: '' // In a real app we'd generate a thumb, keeping simple for now
+      thumbnail: '' 
     };
     
     // Add to top of list
@@ -48,10 +48,6 @@ const App: React.FC = () => {
   };
 
   const handleHistorySelect = (item: HistoryItem) => {
-    // Reconstruct a partial result for display. 
-    // In a full app we would store the full AnalysisResult in history.
-    // For now we just show what we have in the dashboard or just basic info.
-    // Let's create a minimal result object to view the score/verdict again.
     const result: AnalysisResult = {
       score: item.score,
       verdict: item.result,
@@ -74,7 +70,10 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black text-slate-200 font-sans selection:bg-cyan-500/30">
-      <Header currentMode={mode} setMode={setMode} />
+      <Header 
+        currentMode={mode} 
+        setMode={setMode} 
+      />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {mode === AppMode.SCAN && (

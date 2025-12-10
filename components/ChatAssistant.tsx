@@ -24,7 +24,6 @@ const ChatAssistant: React.FC = () => {
     setLoading(true);
 
     try {
-      // Format history for API
       const history = messages.map(m => ({
         role: m.role,
         parts: [{ text: m.text }]
