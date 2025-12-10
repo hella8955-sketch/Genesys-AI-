@@ -1,0 +1,9 @@
+{
+  "name": "Genesys AI",
+  "description": "Advanced Deepfake Detection & Media Intelligence Platform",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
