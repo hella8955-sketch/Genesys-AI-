@@ -1,3 +1,4 @@
+
 import { GoogleGenAI, Type } from "@google/genai";
 import { MODELS } from "../constants";
 import { AnalysisResult } from "../types";
@@ -220,6 +221,21 @@ export const editImageWithNano = async (
 
 // --- AUDIO HELPERS ---
 
+/**
+ * Encodes a Uint8Array to a base64 string.
+ */
+export function encode(bytes: Uint8Array) {
+  let binary = '';
+  const len = bytes.byteLength;
+  for (let i = 0; i < len; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return btoa(binary);
+}
+
+/**
+ * Decodes a base64 string to a Uint8Array.
+ */
 export function decode(base64: string) {
   const binaryString = atob(base64);
   const len = binaryString.length;
@@ -230,6 +246,9 @@ export function decode(base64: string) {
   return bytes;
 }
 
+/**
+ * Decodes raw PCM audio data into an AudioBuffer for playback.
+ */
 export async function decodeAudioData(
   data: Uint8Array,
   ctx: AudioContext,
@@ -249,6 +268,9 @@ export async function decodeAudioData(
   return buffer;
 }
 
+/**
+ * Creates a base64-encoded PCM blob from Float32 audio data.
+ */
 export function createBlob(data: Float32Array): { data: string; mimeType: string } {
   const l = data.length;
   const int16 = new Int16Array(l);
@@ -256,7 +278,7 @@ export function createBlob(data: Float32Array): { data: string; mimeType: string
     int16[i] = data[i] * 32768;
   }
   return {
-    data: btoa(String.fromCharCode.apply(null, Array.from(new Uint8Array(int16.buffer)))),
+    data: encode(new Uint8Array(int16.buffer)),
     mimeType: 'audio/pcm;rate=16000',
   };
 }

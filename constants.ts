@@ -1,13 +1,14 @@
+
 export const MODELS = {
   ANALYSIS_VIDEO: 'gemini-3-pro-preview', // Video understanding
-  ANALYSIS_FAST: 'gemini-2.5-flash-lite-latest', // Fast responses
-  CHECK_FACTS: 'gemini-2.5-flash', // Search/Maps grounding
+  ANALYSIS_FAST: 'gemini-flash-lite-latest', // Fast responses
+  CHECK_FACTS: 'gemini-2.5-flash', // Search/Maps grounding (Maps requires 2.5 series)
   CHAT: 'gemini-3-pro-preview', // High quality chat
-  LIVE: 'gemini-2.5-flash-native-audio-preview-09-2025', // Live API
   TTS: 'gemini-2.5-flash-preview-tts', // Speech
   IMAGE_GEN: 'gemini-3-pro-image-preview', // High quality image gen
   IMAGE_EDIT: 'gemini-2.5-flash-image', // Image editing (nano banana)
-  VIDEO_GEN: 'veo-3.1-fast-generate-preview' // Video generation
+  VIDEO_GEN: 'veo-3.1-fast-generate-preview', // Video generation
+  LIVE: 'gemini-2.5-flash-native-audio-preview-09-2025' // Real-time audio conversation
 };
 
 export const MOCK_HISTORY = [

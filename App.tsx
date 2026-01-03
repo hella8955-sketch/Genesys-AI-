@@ -3,7 +3,6 @@ import Header from './components/Header';
 import VideoAnalyzer from './components/VideoAnalyzer';
 import ResultsDashboard from './components/ResultsDashboard';
 import ChatAssistant from './components/ChatAssistant';
-import LiveVoiceMode from './components/LiveVoiceMode';
 import HistoryList from './components/HistoryList';
 import { AppMode, AnalysisResult, HistoryItem } from './types';
 
@@ -103,8 +102,6 @@ const App: React.FC = () => {
         )}
 
         {mode === AppMode.CHAT && <ChatAssistant />}
-        
-        {mode === AppMode.LIVE && <LiveVoiceMode />}
       </main>
 
       {/* Footer / Status */}

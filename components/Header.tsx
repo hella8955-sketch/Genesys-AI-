@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Activity, MessageSquare } from 'lucide-react';
+import { ShieldCheck, MessageSquare } from 'lucide-react';
 import { AppMode } from '../types';
 
 interface HeaderProps {
@@ -10,7 +10,6 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ currentMode, setMode }) => {
   const navItems = [
     { mode: AppMode.SCAN, icon: ShieldCheck, label: 'Detector' },
-    { mode: AppMode.LIVE, icon: Activity, label: 'Live' },
     { mode: AppMode.CHAT, icon: MessageSquare, label: 'Chat' },
   ];
 

@@ -30,8 +30,7 @@ export interface ChatMessage {
 
 export enum AppMode {
   SCAN = 'SCAN',
-  CHAT = 'CHAT',
-  LIVE = 'LIVE'
+  CHAT = 'CHAT'
 }
 
 export type PlanType = 'TRIAL' | 'STARTER' | 'INTERMEDIATE' | 'BUSINESS';
@@ -59,6 +58,6 @@ export const PLAN_FEATURES: Record<PlanType, { scans: number; features: string[]
   },
   BUSINESS: {
     scans: -1,
-    features: ['SCAN_BASIC', 'REPORT', 'SEARCH', 'MAPS', 'CHAT', 'LIVE', 'API']
+    features: ['SCAN_BASIC', 'REPORT', 'SEARCH', 'MAPS', 'CHAT', 'API']
   }
 };
